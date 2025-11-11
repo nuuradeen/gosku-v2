@@ -8,7 +8,7 @@ import { Cat, Eye, EyeOff } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
-
+import Link from 'next/link'
 import { createClient } from '@/lib/supabase/client'
 
 export default function Login01() {
@@ -133,7 +133,7 @@ export default function Login01() {
                                     />
                                 </svg>
                                 <span className="font-medium text-zinc-700 dark:text-zinc-300 tracking-tighter">
-                                    Sign in with Google
+                                    Sign up with Google
                                 </span>
                             </Button>
 
@@ -149,7 +149,7 @@ export default function Login01() {
                             >
                                 <Cat className="mr-2 h-5 w-5 text-zinc-700 dark:text-zinc-300" />
                                 <span className="font-medium text-zinc-700 dark:text-zinc-300 tracking-tighter">
-                                    Sign in with Github
+                                    Sign up with Github
                                 </span>
                             </Button>
                         </div>
@@ -299,6 +299,12 @@ export default function Login01() {
                                 </div>
                             </Button>
                             </form>
+                            <div className="mt-4 text-center text-sm">
+                        Already have an account?{' '}
+              <Link href="/auth/login" className="underline underline-offset-4">
+                Log in
+              </Link>
+            </div>
                         </div>
 
                         {/* Footer */}
