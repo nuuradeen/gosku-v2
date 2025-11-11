@@ -11,7 +11,7 @@ import { useState } from 'react'
 
 import { createClient } from '@/lib/supabase/client'
 
-export default function Signup01() {
+export default function Login01() {
     const [showPassword, setShowPassword] = useState(false);
     const [email, setEmail] = useState('')
     const [firstName, setFirstName] = useState('')
