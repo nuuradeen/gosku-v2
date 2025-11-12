@@ -7,12 +7,11 @@ import {
   IconDashboard,
   IconFileAi,
   IconFileDescription,
-  IconFolder,
-  IconHelp,
   IconInnerShadowTop,
-  IconListDetails,
+  IconPackage,
   IconSearch,
   IconSettings,
+  IconUpload,
   IconUsers,
 } from "@tabler/icons-react"
 
@@ -38,23 +37,18 @@ const data = {
   navMain: [
     {
       title: "Dashboard",
-      url: "#",
+      url: "/dashboard",
       icon: IconDashboard,
     },
     {
-      title: "Lifecycle",
+      title: "Upload Page",
       url: "#",
-      icon: IconListDetails,
+      icon: IconUpload,
     },
     {
-      title: "Analytics",
+      title: "Go Packs",
       url: "#",
-      icon: IconChartBar,
-    },
-    {
-      title: "Projects",
-      url: "#",
-      icon: IconFolder,
+      icon: IconPackage,
     },
     {
       title: "Team",
@@ -117,11 +111,6 @@ const data = {
       icon: IconSettings,
     },
     {
-      title: "Get Help",
-      url: "#",
-      icon: IconHelp,
-    },
-    {
       title: "Search",
       url: "#",
       icon: IconSearch,
@@ -152,7 +141,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <NavSecondary items={data.navSecondary} className="mt-auto" />
       </SidebarContent>
       <SidebarFooter>
-        <NavUser user={data.user} />
+        <NavUser/>
       </SidebarFooter>
     </Sidebar>
   )

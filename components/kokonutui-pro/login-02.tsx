@@ -112,6 +112,7 @@ export default function Login02({
                                 transition-all duration-300"
                         >
                         {isLoading ? 'Logging in...' : 'Login'}
+                        {error && <p className="text-red-500 text-sm">{error}</p>}
                         </Button>
                     </div>
                     </form>

@@ -29,16 +29,30 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar"
 
-export function NavUser({
-  user,
-}: {
-  user: {
-    name: string
-    email: string
-    avatar: string
-  }
-}) {
+import { LogOutMenuItem } from "@/components/logout-button"
+
+import { useUserInfo } from "@/hooks/useUserSupabase"
+import { IconLoader2 } from "@tabler/icons-react"
+
+export function NavUser() {
   const { isMobile } = useSidebar()
+  // Get user from useUserInfo hook
+  const { user, loading } = useUserInfo()
+  if (loading) {
+    return (
+      <SidebarMenu>
+        <SidebarMenuItem>
+          <SidebarMenuButton size="lg">
+            Loading User…
+            <IconLoader2 className="h-8 w-8 animate-spin text-blue-500" />
+          </SidebarMenuButton>
+        </SidebarMenuItem>
+      </SidebarMenu>
+    )
+  }
+  if (!user) {
+    return null
+  }
 
   return (
     <SidebarMenu>
@@ -51,7 +65,7 @@ export function NavUser({
             >
               <Avatar className="h-8 w-8 rounded-lg grayscale">
                 <AvatarImage src={user.avatar} alt={user.name} />
-                <AvatarFallback className="rounded-lg">CN</AvatarFallback>
+                  <AvatarFallback className="rounded-lg">{user.name.charAt(0)}</AvatarFallback>
               </Avatar>
               <div className="grid flex-1 text-left text-sm leading-tight">
                 <span className="truncate font-medium">{user.name}</span>
@@ -99,8 +113,10 @@ export function NavUser({
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
             <DropdownMenuItem>
+              <LogOutMenuItem>
               <IconLogout />
               Log out
+              </LogOutMenuItem>
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
