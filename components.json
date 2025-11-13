@@ -26,6 +26,7 @@
         "X-API-Key": "${KOKO_PRO_TOKEN}"
       }
     },
-    "@kokonutui": "https://kokonutui.com/r/{name}.json"
+    "@kokonutui": "https://kokonutui.com/r/{name}.json",
+    "@magicui": "https://magicui.design/r/{name}.json"
   }
 }

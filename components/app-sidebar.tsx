@@ -2,12 +2,11 @@
 
 import * as React from "react"
 import {
+  IconBarcode,
   IconCamera,
-  IconChartBar,
   IconDashboard,
   IconFileAi,
   IconFileDescription,
-  IconInnerShadowTop,
   IconPackage,
   IconSearch,
   IconSettings,
@@ -130,8 +129,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               className="data-[slot=sidebar-menu-button]:p-1.5"
             >
               <a href="#">
-                <IconInnerShadowTop className="size-5" />
-                <span className="text-base font-semibold">Acme Inc.</span>
+                <IconBarcode className="size-5" />
+                <span className="text-base font-semibold">Go SKU</span>
               </a>
             </SidebarMenuButton>
           </SidebarMenuItem>

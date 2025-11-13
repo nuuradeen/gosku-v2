@@ -2,8 +2,9 @@
 
 import { RiOpenaiFill, RiAnthropicFill, RiGoogleFill,  } from "react-icons/ri";
 import { motion, type Variants } from "framer-motion";
-import Image from "next/image";
 
+import { Terminal } from "@/components/ui/terminal";
+import Card08 from "@/components/kokonutui-pro/card-08";
 import FileUpload  from "@/components/kokonutui/file-upload";
 
 interface Statistic {
@@ -112,9 +113,7 @@ export default function Feature06() {
                         <FileUpload />
                         <div className="absolute inset-0 pointer-events-none border border-neutral-200 dark:border-neutral-800 rounded-2xl" />
                     </motion.div>
-                </div>
-
-                {/* Statistics Grid */}
+                </div>                {/* Statistics Grid */}
                 <motion.div
                     initial="hidden"
                     whileInView="visible"
@@ -122,39 +121,8 @@ export default function Feature06() {
                     variants={staggerContainer}
                     className="grid sm:grid-cols-2 gap-8 mt-24"
                 >
-                    {statistics.map((stat) => (
-                        <motion.div
-                            key={stat.label}
-                            variants={fadeInUp}
-                            className="relative group p-8 rounded-2xl bg-neutral-50 dark:bg-neutral-900/50 hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-colors"
-                        >
-                            <span className="absolute top-4 right-4 text-sm text-neutral-400 dark:text-neutral-500 font-mono">
-                                {stat.index}
-                            </span>
-                            <div className="space-y-6">
-                                <div className="space-y-2">
-                                    <h3 className="text-4xl font-semibold text-neutral-900 dark:text-neutral-100">
-                                        {stat.value}
-                                    </h3>
-                                    <p className="text-lg font-medium text-neutral-600 dark:text-neutral-400">
-                                        {stat.label}
-                                    </p>
-                                </div>
-                                <p className="text-neutral-600 dark:text-neutral-400">
-                                    {stat.description}
-                                </p>
-                            </div>
-
-                            {/* Client Logos */}
-                            {stat.index === "02" && (
-                                <div className="mt-8 flex items-center gap-4">
-                                    <RiOpenaiFill className="w-6 h-6 dark:hidden" />
-                                    <RiAnthropicFill className="w-6 h-6 dark:hidden" />
-                                    <RiGoogleFill className="w-6 h-6" />
-                                </div>
-                            )}
-                        </motion.div>
-                    ))}
+                                    <Terminal children={<div>Processing your documents...</div>} />
+                                    <Card08 />
                 </motion.div>
             </div>
         </section>
