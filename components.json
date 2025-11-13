@@ -20,11 +20,12 @@
   },
   "registries": {
     "@supabase": "https://supabase.com/ui/r/{name}.json",
-      "@kokonutui-pro": {
-            "url": "https://kokonutui.pro/api/r/{name}",
-            "headers": {
-                "X-API-Key": "${KOKO_PRO_TOKEN}"
-            }
-        }
+    "@kokonutui-pro": {
+      "url": "https://kokonutui.pro/api/r/{name}",
+      "headers": {
+        "X-API-Key": "${KOKO_PRO_TOKEN}"
+      }
+    },
+    "@kokonutui": "https://kokonutui.com/r/{name}.json"
   }
 }

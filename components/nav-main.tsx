@@ -9,6 +9,7 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
 
+import { usePathname } from "next/navigation"
 import Link from "next/link"
 
 export function NavMain({
@@ -20,6 +21,16 @@ export function NavMain({
     icon?: Icon
   }[]
 }) {
+  // Highlight the current page in the sidebar
+  const pathname = usePathname()
+  // Helper function to check if current path matches or is a child of the item path
+  const isActive = (itemUrl: string) => {
+    if (itemUrl === '/') {
+      return pathname === '/'
+    }
+    return pathname === itemUrl || pathname.startsWith(itemUrl + '/')
+  }
+
   return (
     <SidebarGroup>
       <SidebarGroupContent className="flex flex-col gap-2">
@@ -36,16 +47,24 @@ export function NavMain({
           </SidebarMenuItem>
         </SidebarMenu>
         <SidebarMenu>
-          {items.map((item) => (
-            <SidebarMenuItem key={item.title}>
-              <SidebarMenuButton asChild tooltip={item.title}>
-                <Link href={item.url}>
-                {item.icon && <item.icon />}
-                <span>{item.title}</span>
-                </Link>
-              </SidebarMenuButton>
-            </SidebarMenuItem>
-          ))}
+          {items.map((item) => {
+            const active = isActive(item.url)
+            return (
+              <SidebarMenuItem key={item.title}>
+                <SidebarMenuButton 
+                  asChild 
+                  tooltip={item.title} 
+                  isActive={active}
+                  className={active ? "bg-green-500 text-white hover:bg-green-600 data-[active=true]:bg-green-500" : ""}
+                >
+                  <Link href={item.url}>
+                    {item.icon && <item.icon />}
+                    <span>{item.title}</span>
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            )
+          })}
         </SidebarMenu>
       </SidebarGroupContent>
     </SidebarGroup>
