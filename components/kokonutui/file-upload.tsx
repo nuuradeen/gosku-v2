@@ -20,6 +20,8 @@ import {
 import { motion, AnimatePresence } from "motion/react";
 import { UploadCloud, File as FileIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { RestoreAction } from "next/dist/client/components/router-reducer/router-reducer-types";
+
 
 type FileStatus = "idle" | "dragging" | "uploading" | "error";
 
@@ -65,6 +67,7 @@ const formatBytes = (bytes: number, decimals = 2): string => {
 };
 
 const UploadIllustration = () => (
+
     <div className="relative w-16 h-16">
         <svg
             viewBox="0 0 100 100"
